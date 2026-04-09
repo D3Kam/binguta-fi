@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--black:#020304;--off-black:#080c10;--panel:#0e1520;--border:rgba(255,255,255,0.07);--accent:#c8a96e;--accent2:#7eb8d4;--muted:#5a6472;--white:#f0f2f5}
+  :root{--black:#020304;--off-black:#080c10;--panel:#0e1520;--border:rgba(255,255,255,0.07);--accent:#c8a96e;--accent2:#7eb8d4;--muted:#8c97a6;--white:#f0f2f5}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{background:var(--black);color:#d8dde6;font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden}
@@ -26,7 +26,7 @@
 
   .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:70px 5vw 10vh;overflow:hidden}
   .hero-img{position:absolute;inset:0;background-image:url('assets/images/hero/hero-bg2.png');background-size:cover;background-position:center 40%}
-  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(2,3,4,.92) 0%,rgba(2,3,4,.65) 55%,rgba(2,3,4,.35) 100%),linear-gradient(to top,rgba(2,3,4,.96) 0%,rgba(2,3,4,.3) 40%,rgba(2,3,4,.1) 100%)}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(2,3,4,.85) 0%,rgba(2,3,4,.55) 55%,rgba(2,3,4,.25) 100%),linear-gradient(to top,rgba(2,3,4,.92) 0%,rgba(2,3,4,.25) 40%,rgba(2,3,4,.05) 100%)}
   .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:80px 80px}
   .radar{position:absolute;top:15%;right:6%;width:280px;height:280px;opacity:.12;pointer-events:none}
   .radar-ring{position:absolute;inset:0;border-radius:50%;border:1px solid var(--accent2);animation:rp 4s ease-out infinite}
@@ -36,7 +36,7 @@
   .eyebrow::before{content:'';display:inline-block;width:36px;height:1px;background:var(--accent)}
   .hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,9.5vw,9.5rem);line-height:.93;letter-spacing:.03em;color:var(--white);max-width:860px;position:relative}
   .hero h1 .hollow{color:transparent;-webkit-text-stroke:1px rgba(200,169,110,.6)}
-  .hero-sub{margin-top:2rem;max-width:500px;font-size:1rem;line-height:1.75;color:rgba(216,221,230,.72);position:relative}
+  .hero-sub{margin-top:2rem;max-width:500px;font-size:1rem;line-height:1.75;color:rgba(216,221,230,.88);position:relative}
   .hero-actions{display:flex;align-items:center;gap:2rem;margin-top:3rem;position:relative;flex-wrap:wrap}
   .btn-p{font-family:'Barlow Condensed',sans-serif;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;padding:1rem 2.4rem;background:var(--accent);color:var(--black);border:none;cursor:pointer;text-decoration:none;font-weight:600;transition:all .25s;display:inline-block}
   .btn-p:hover{background:var(--white);transform:translateY(-1px)}
@@ -73,8 +73,8 @@
   .focus-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-bottom:5rem;align-items:end}
   .focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
   .fi{position:relative;overflow:hidden;aspect-ratio:4/3;cursor:default}
-  .fi-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease;filter:brightness(.5) saturate(.75)}
-  .fi:hover .fi-img{transform:scale(1.05);filter:brightness(.6) saturate(.85)}
+  .fi-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease;filter:brightness(.65) saturate(.85)}
+  .fi:hover .fi-img{transform:scale(1.05);filter:brightness(.78) saturate(.95)}
   .fi-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(2,3,4,.97) 0%,rgba(2,3,4,.55) 45%,rgba(2,3,4,.1) 100%)}
   .fi-content{position:absolute;bottom:0;left:0;right:0;padding:1.8rem}
   .fi-line{position:absolute;bottom:100%;left:1.8rem;width:0;height:1px;background:var(--accent);transition:width .4s ease}
