@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BINGUTA — Future Innovations</title>
+<meta name="description" content="Defense technology venture capital. Investing in the next generation of NATO and EU defense dominance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--black:#020304;--off-black:#080c10;--panel:#0e1520;--border:rgba(255,255,255,0.07);--accent:#c8a96e;--accent2:#7eb8d4;--muted:#5a6472;--white:#f0f2f5}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--black);color:#d8dde6;font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden}
+  ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--muted)}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:70px;background:rgba(2,3,4,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+  .nav-logo{display:flex;flex-direction:column;line-height:1;gap:2px;text-decoration:none}
+  .nav-logo .wm{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.12em;color:var(--white)}
+  .nav-logo .nm{font-family:'Barlow Condensed',sans-serif;font-size:.52rem;letter-spacing:.38em;color:var(--muted);text-transform:uppercase}
+  .nav-links{display:flex;gap:2.5rem;list-style:none}
+  .nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+  .nav-links a:hover{color:var(--white)}
+  .nav-cta{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;padding:.5rem 1.4rem;border:1px solid var(--accent);color:var(--accent);background:transparent;cursor:pointer;text-decoration:none;transition:all .25s;white-space:nowrap}
+  .nav-cta:hover{background:var(--accent);color:var(--black)}
+
+  .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:70px 5vw 10vh;overflow:hidden}
+  .hero-img{position:absolute;inset:0;background-image:url('assets/images/hero/hero-bg2.png');background-size:cover;background-position:center 40%}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(2,3,4,.92) 0%,rgba(2,3,4,.65) 55%,rgba(2,3,4,.35) 100%),linear-gradient(to top,rgba(2,3,4,.96) 0%,rgba(2,3,4,.3) 40%,rgba(2,3,4,.1) 100%)}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:80px 80px}
+  .radar{position:absolute;top:15%;right:6%;width:280px;height:280px;opacity:.12;pointer-events:none}
+  .radar-ring{position:absolute;inset:0;border-radius:50%;border:1px solid var(--accent2);animation:rp 4s ease-out infinite}
+  .radar-ring:nth-child(2){animation-delay:1.4s}.radar-ring:nth-child(3){animation-delay:2.7s}
+  @keyframes rp{0%{transform:scale(.05);opacity:1}100%{transform:scale(1);opacity:0}}
+  .eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.42em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;display:flex;align-items:center;gap:.8rem;position:relative}
+  .eyebrow::before{content:'';display:inline-block;width:36px;height:1px;background:var(--accent)}
+  .hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,9.5vw,9.5rem);line-height:.93;letter-spacing:.03em;color:var(--white);max-width:860px;position:relative}
+  .hero h1 .hollow{color:transparent;-webkit-text-stroke:1px rgba(200,169,110,.6)}
+  .hero-sub{margin-top:2rem;max-width:500px;font-size:1rem;line-height:1.75;color:rgba(216,221,230,.72);position:relative}
+  .hero-actions{display:flex;align-items:center;gap:2rem;margin-top:3rem;position:relative;flex-wrap:wrap}
+  .btn-p{font-family:'Barlow Condensed',sans-serif;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;padding:1rem 2.4rem;background:var(--accent);color:var(--black);border:none;cursor:pointer;text-decoration:none;font-weight:600;transition:all .25s;display:inline-block}
+  .btn-p:hover{background:var(--white);transform:translateY(-1px)}
+  .btn-g{font-family:'Barlow Condensed',sans-serif;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:color .2s}
+  .btn-g::after{content:'→';transition:transform .2s}
+  .btn-g:hover{color:var(--white)}.btn-g:hover::after{transform:translateX(4px)}
+  .hero-stats{position:absolute;right:5vw;bottom:10vh;display:flex;flex-direction:column;gap:2rem;text-align:right}
+  .stat .n{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--white);line-height:1}
+  .stat .l{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
+
+  .ticker{background:var(--accent);overflow:hidden;padding:.65rem 0}
+  .ticker-inner{display:flex;gap:2.5rem;animation:tick 30s linear infinite;white-space:nowrap}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .tk{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--black);font-weight:600;flex-shrink:0}
+  .sep{color:rgba(0,0,0,.28)}
+
+  .sec{padding:8rem 5vw}
+  .sec-label{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;letter-spacing:.45em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;display:flex;align-items:center;gap:.7rem}
+  .sec-label::before{content:'';display:inline-block;width:22px;height:1px;background:var(--accent)}
+  .sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4rem,4.5vw,5rem);line-height:1;letter-spacing:.03em;color:var(--white);margin-bottom:1.5rem}
+  .sec-body{font-size:.95rem;line-height:1.78;color:var(--muted);max-width:540px}
+
+  .thesis-sec{background:var(--off-black);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .thesis-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+  .thesis-cards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+  .tc{background:var(--off-black);padding:2.2rem 1.8rem;position:relative;overflow:hidden;transition:background .3s}
+  .tc::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--accent);transition:height .4s ease}
+  .tc:hover{background:var(--panel)}.tc:hover::before{height:100%}
+  .tc-n{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;color:rgba(255,255,255,.05);line-height:1;margin-bottom:.7rem}
+  .tc-t{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;letter-spacing:.1em;text-transform:uppercase;color:var(--white);margin-bottom:.5rem}
+  .tc-b{font-size:.83rem;line-height:1.65;color:var(--muted)}
+
+  .focus-sec{background:var(--black)}
+  .focus-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-bottom:5rem;align-items:end}
+  .focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+  .fi{position:relative;overflow:hidden;aspect-ratio:4/3;cursor:default}
+  .fi-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease;filter:brightness(.5) saturate(.75)}
+  .fi:hover .fi-img{transform:scale(1.05);filter:brightness(.6) saturate(.85)}
+  .fi-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(2,3,4,.97) 0%,rgba(2,3,4,.55) 45%,rgba(2,3,4,.1) 100%)}
+  .fi-content{position:absolute;bottom:0;left:0;right:0;padding:1.8rem}
+  .fi-line{position:absolute;bottom:100%;left:1.8rem;width:0;height:1px;background:var(--accent);transition:width .4s ease}
+  .fi:hover .fi-line{width:calc(100% - 3.6rem)}
+  .fi-title{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:var(--white);margin-bottom:.4rem}
+  .fi-desc{font-size:.78rem;line-height:1.6;color:rgba(90,100,114,.85);max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .3s ease;opacity:0}
+  .fi:hover .fi-desc{max-height:80px;opacity:1}
+  .fi-tag{display:inline-block;margin-top:.7rem;font-family:'Barlow Condensed',sans-serif;font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;padding:.2rem .5rem;border:1px solid rgba(200,169,110,.3);color:var(--accent)}
+
+  .mandate-sec{background:var(--off-black);border-top:1px solid var(--border)}
+  .mandate-inner{max-width:1100px;margin:0 auto;text-align:center}
+  .mandate-q{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4.5vw,5rem);line-height:1.05;letter-spacing:.03em;color:var(--white);margin:3rem 0}
+  .mandate-q .hl{color:var(--accent)}
+  .mandate-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;margin-top:5rem;text-align:left;border-top:1px solid var(--border);padding-top:4rem}
+  .mc h4{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.35em;text-transform:uppercase;color:var(--accent);margin-bottom:.9rem}
+  .mc p{font-size:.88rem;line-height:1.72;color:var(--muted)}
+
+  .approach-sec{background:var(--black);border-top:1px solid var(--border)}
+  .sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:4rem}
+  .si{background:var(--black);padding:3.2rem;display:flex;gap:1.8rem;align-items:flex-start;transition:background .3s}
+  .si:hover{background:var(--panel)}
+  .si-num{font-family:'Bebas Neue',sans-serif;font-size:.95rem;color:var(--accent);flex-shrink:0;padding-top:4px}
+  .si h3{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;letter-spacing:.08em;text-transform:uppercase;color:var(--white);margin-bottom:.55rem}
+  .si p{font-size:.85rem;line-height:1.65;color:var(--muted)}
+
+  .cta-sec{background:var(--accent);padding:8rem 5vw;position:relative;overflow:hidden}
+  .cta-sec::before{content:'BINGUTA';position:absolute;font-family:'Bebas Neue',sans-serif;font-size:22vw;color:rgba(0,0,0,.07);line-height:1;right:-2vw;bottom:-2vw;pointer-events:none;letter-spacing:.03em}
+  .cta-inner{max-width:700px;position:relative}
+  .cta-sec .sec-label{color:rgba(0,0,0,.45)}.cta-sec .sec-label::before{background:rgba(0,0,0,.3)}
+  .cta-sec .sec-title{color:var(--black);font-size:clamp(2.8rem,5.5vw,6rem)}
+  .cta-sec .sec-body{color:rgba(0,0,0,.55);max-width:460px}
+  .cta-form{display:flex;margin-top:3rem;max-width:460px}
+  .cta-form input{flex:1;background:rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.18);border-right:none;padding:.9rem 1.1rem;font-family:'Barlow',sans-serif;font-size:.88rem;color:var(--black);outline:none}
+  .cta-form input::placeholder{color:rgba(0,0,0,.38)}
+  .cta-form button{background:var(--black);color:var(--accent);border:1px solid var(--black);padding:.9rem 1.8rem;font-family:'Barlow Condensed',sans-serif;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;transition:background .2s;font-weight:600;white-space:nowrap}
+  .cta-form button:hover{background:var(--off-black)}
+
+  footer{background:var(--off-black);border-top:1px solid var(--border);padding:4.5rem 5vw;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:4rem;align-items:start}
+  .fb .wm{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.12em;color:var(--white)}
+  .fb .nm{font-family:'Barlow Condensed',sans-serif;font-size:.52rem;letter-spacing:.38em;color:var(--muted);text-transform:uppercase}
+  .fb p{margin-top:1rem;font-size:.8rem;line-height:1.65;color:var(--muted);max-width:280px}
+  .fc h5{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;letter-spacing:.38em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem}
+  .fc a{display:block;font-size:.83rem;color:var(--muted);text-decoration:none;margin-bottom:.55rem;transition:color .2s}
+  .fc a:hover{color:var(--white)}
+  .foot-bar{background:var(--off-black);border-top:1px solid var(--border);padding:1.4rem 5vw;display:flex;justify-content:space-between;align-items:center}
+  .foot-bar p{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+
+  .fu{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .fu.vis{opacity:1;transform:none}
+
+  @media(max-width:1024px){.focus-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:900px){
+    .nav-links{display:none}
+    .thesis-grid,.focus-header,.mandate-cols,.sig-grid{grid-template-columns:1fr}
+    .hero-stats{display:none}
+    footer{grid-template-columns:1fr}
+    .foot-bar{flex-direction:column;gap:.5rem;text-align:center}
+    .thesis-cards{grid-template-columns:1fr}
+  }
+  @media(max-width:580px){.focus-grid{grid-template-columns:1fr}.fi{aspect-ratio:16/9}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nav-logo">
+    <span class="wm">BINGUTA</span>
+    <span class="nm">Future Innovations</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#thesis">Thesis</a></li>
+    <li><a href="#focus">Focus Areas</a></li>
+    <li><a href="#mandate">Mandate</a></li>
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Apply for Funding</a>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="radar">
+    <div class="radar-ring"></div>
+    <div class="radar-ring"></div>
+    <div class="radar-ring"></div>
+  </div>
+  <p class="eyebrow">Defense Technology Venture Capital</p>
+  <h1>We Back the<br>Next Generation<br>of <span class="hollow">Defense</span><br>Dominance</h1>
+  <p class="hero-sub">Investing in companies defining the future of warfare and security. High-growth, high-impact technologies scaled across NATO and EU markets.</p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-p">Pitch Your Company</a>
+    <a href="#thesis" class="btn-g">Our Investment Thesis</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="n">NATO</div><div class="l">Alliance Markets</div></div>
+    <div class="stat"><div class="n">EU</div><div class="l">Regulatory Ready</div></div>
+    <div class="stat"><div class="n">D+0</div><div class="l">Deploy Today</div></div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="tk">VTOL Systems <span class="sep">✦</span></span>
+    <span class="tk">C-UAS Solutions <span class="sep">✦</span></span>
+    <span class="tk">Radar Technologies <span class="sep">✦</span></span>
+    <span class="tk">FPV Drone Systems <span class="sep">✦</span></span>
+    <span class="tk">Directed Energy <span class="sep">✦</span></span>
+    <span class="tk">Dual-Use Innovation <span class="sep">✦</span></span>
+    <span class="tk">NATO Interoperability <span class="sep">✦</span></span>
+    <span class="tk">Asymmetric Advantage <span class="sep">✦</span></span>
+    <span class="tk">VTOL Systems <span class="sep">✦</span></span>
+    <span class="tk">C-UAS Solutions <span class="sep">✦</span></span>
+    <span class="tk">Radar Technologies <span class="sep">✦</span></span>
+    <span class="tk">FPV Drone Systems <span class="sep">✦</span></span>
+    <span class="tk">Directed Energy <span class="sep">✦</span></span>
+    <span class="tk">Dual-Use Innovation <span class="sep">✦</span></span>
+    <span class="tk">NATO Interoperability <span class="sep">✦</span></span>
+    <span class="tk">Asymmetric Advantage <span class="sep">✦</span></span>
+  </div>
+</div>
+
+<section class="sec thesis-sec" id="thesis">
+  <div class="thesis-grid fu">
+    <div>
+      <p class="sec-label">Investment Thesis</p>
+      <h2 class="sec-title">Dual-Use.<br>Scalable.<br>Deployable.<br>Now.</h2>
+      <p class="sec-body">The line between civilian and military technology is gone. We target dual-use innovations with immediate application and long-term strategic value — solutions deployable today that dominate tomorrow.</p>
+      <br><br>
+      <p class="sec-body">We move early, act decisively, and partner with founders building mission-critical systems — not incremental solutions.</p>
+    </div>
+    <div class="thesis-cards">
+      <div class="tc"><div class="tc-n">01</div><div class="tc-t">Scale Rapidly</div><p class="tc-b">Technologies that expand across defense and commercial markets without friction or compromise.</p></div>
+      <div class="tc"><div class="tc-n">02</div><div class="tc-t">Solve Real Problems</div><p class="tc-b">Operational challenges, not theoretical ones. Proven under adversarial conditions, not lab scenarios.</p></div>
+      <div class="tc"><div class="tc-n">03</div><div class="tc-t">NATO Ready</div><p class="tc-b">Seamless integration into existing NATO and EU infrastructure from day one of deployment.</p></div>
+      <div class="tc"><div class="tc-n">04</div><div class="tc-t">Asymmetric Edge</div><p class="tc-b">Delivering outsized capability advantages on the modern contested battlefield.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec focus-sec" id="focus">
+  <div class="focus-header fu">
+    <div>
+      <p class="sec-label">Investment Focus</p>
+      <h2 class="sec-title">Where We Deploy Capital</h2>
+    </div>
+    <p class="sec-body">Aggressively investing across six high-impact verticals defining the next decade of defense dominance — each representing immediate operational demand and long-term strategic leverage.</p>
+  </div>
+  <div class="focus-grid fu">
+    <div class="fi">
+      <img class="fi-img" src="assets/images/focus/vtol.png" alt="VTOL Drone Ecosystems" loading="lazy">
+      <div class="fi-overlay"></div>
+      <div class="fi-content">
+        <div class="fi-line"></div>
+        <div class="fi-title">VTOL Drone Ecosystems</div>
+        <p class="fi-desc">Fully integrated, modular platforms designed for endurance, flexibility, and mission adaptability. Infrastructure — not hardware.</p>
+        <span class="fi-tag">Air Superiority</span>
+      </div>
+    </div>
+    <div class="fi">
+      <img class="fi-img" src="assets/images/focus/fpv.png" alt="FPV Drone Systems" loading="lazy">
+      <div class="fi-overlay"></div>
+      <div class="fi-content">
+        <div class="fi-line"></div>
+        <div class="fi-title">FPV Drone Systems</div>
+        <p class="fi-desc">Low-cost, high-impact systems reshaping tactical operations. Proven on the battlefield. Scalable at speed across multiple theaters.</p>
+        <span class="fi-tag">Tactical Edge</span>
+      </div>
+    </div>
+    <div class="fi">
+      <img class="fi-img" src="assets/images/focus/cuas.png" alt="C-UAS Solutions" loading="lazy">
+      <div class="fi-overlay"></div>
+      <div class="fi-content">
+        <div class="fi-line"></div>
+        <div class="fi-title">C-UAS Solutions</div>
+        <p class="fi-desc">Detection, tracking, and neutralization technologies built for real-world threats, not lab conditions. The counter-drone imperative.</p>
+        <span class="fi-tag">Counter-Drone</span>
+      </div>
+    </div>
+    <div class="fi">
+      <img class="fi-img" src="assets/images/focus/radar.png" alt="Radar Systems" loading="lazy">
+      <div class="fi-overlay"></div>
+      <div class="fi-content">
+        <div class="fi-line"></div>
+        <div class="fi-title">Radar Systems</div>
+        <p class="fi-desc">Advanced sensing platforms operating in contested, electronic warfare-heavy environments with full spectral awareness.</p>
+        <span class="fi-tag">ISR</span>
+      </div>
+    </div>
+    <div class="fi">
+      <img class="fi-img" src="assets/images/focus/dew.png" alt="Directed Energy" loading="lazy">
+      <div class="fi-overlay"></div>
+      <div class="fi-content">
+        <div class="fi-line"></div>
+        <div class="fi-title">Directed Energy</div>
+        <p class="fi-desc">Scalable, cost-efficient laser and high-energy solutions for next-generation threat mitigation at the speed of light.</p>
+        <span class="fi-tag">DEW</span>
+      </div>
+    </div>
+    <div class="fi">
+      <img class="fi-img" src="assets/images/focus/dualuse.png" alt="Dual-Use Technology" loading="lazy">
+      <div class="fi-overlay"></div>
+      <div class="fi-content">
+        <div class="fi-line"></div>
+        <div class="fi-title">Dual-Use Technology</div>
+        <p class="fi-desc">Innovations crossing the civilian-military divide with immediate commercial pull-through and decisive defense applications.</p>
+        <span class="fi-tag">Crossover</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec mandate-sec" id="mandate">
+  <div class="mandate-inner fu">
+    <p class="sec-label" style="justify-content:center">Operating Mandate</p>
+    <div class="mandate-q">Built for <span class="hl">NATO</span>.<br>Scaled Across <span class="hl">Europe</span>.<br>Deployed <span class="hl">Today</span>.</div>
+    <p class="sec-body" style="max-width:680px;margin:0 auto;text-align:center">We operate across NATO and EU countries, backing companies that meet the highest standards of interoperability, compliance, and operational readiness. This is not experimental technology. This is deployable capability.</p>
+    <div class="mandate-cols">
+      <div class="mc"><h4>Strategic Access</h4><p>Direct pathways into defense procurement channels, ministry relationships, and alliance frameworks across all 32 NATO member states.</p></div>
+      <div class="mc"><h4>Capital + Network</h4><p>Funding is just the starting point. We bring defense networks, operator feedback loops, and a clear pathway from prototype to program-of-record.</p></div>
+      <div class="mc"><h4>Execution Velocity</h4><p>We move at the speed of the threat environment. Decisions in days, not months. Urgency is a competitive advantage — we operate accordingly.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec approach-sec" id="approach">
+  <div class="fu">
+    <p class="sec-label">Founder Criteria</p>
+    <h2 class="sec-title">We Partner with Builders,<br>Not Dreamers</h2>
+  </div>
+  <div class="sig-grid fu">
+    <div class="si"><span class="si-num">01</span><div><h3>Ship Under Pressure</h3><p>Teams that iterate fast in adversarial conditions. If your product hasn't faced a real-world stress test, we're not your investor yet.</p></div></div>
+    <div class="si"><span class="si-num">02</span><div><h3>Mission-Critical Focus</h3><p>You're solving a problem where failure has consequences. Not incremental SaaS. Not "defense-adjacent." Core, irreplaceable capability.</p></div></div>
+    <div class="si"><span class="si-num">03</span><div><h3>NATO / EU Pathway Clear</h3><p>You understand compliance, dual-use regulation, and interoperability. Or you're willing to learn fast with our guidance and network.</p></div></div>
+    <div class="si"><span class="si-num">04</span><div><h3>Asymmetric Advantage</h3><p>Your technology creates a capability gap the adversary cannot quickly close. We invest in moats measured in operational outcomes.</p></div></div>
+  </div>
+</section>
+
+<section class="cta-sec" id="contact">
+  <div class="cta-inner">
+    <p class="sec-label">Apply for Investment</p>
+    <h2 class="sec-title">If You're Building What's Next — We're Already Looking for You.</h2>
+    <p class="sec-body">Tell us what you're building. We review every submission and move fast on the right teams. Capital is just the starting point.</p>
+    <div class="cta-form">
+      <input type="email" placeholder="founder@company.com">
+      <button type="button">Submit →</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fb">
+    <div class="wm">BINGUTA</div>
+    <div class="nm">Future Innovations</div>
+    <p>Venture capital for the next generation of defense and security technology. NATO-aligned. EU-compliant. Deployed now.</p>
+  </div>
+  <div class="fc">
+    <h5>Navigate</h5>
+    <a href="#thesis">Investment Thesis</a>
+    <a href="#focus">Focus Areas</a>
+    <a href="#mandate">Our Mandate</a>
+    <a href="#approach">Founder Criteria</a>
+    <a href="#contact">Apply for Funding</a>
+  </div>
+  <div class="fc">
+    <h5>Contact</h5>
+    <a href="mailto:founders@binguta.com">founders@binguta.com</a>
+    <a href="mailto:press@binguta.com">press@binguta.com</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Use</a>
+  </div>
+</footer>
+<div class="foot-bar">
+  <p>© 2026 Binguta Future Innovations. All rights reserved.</p>
+  <p>Built for NATO. Scaled Across Europe.</p>
+</div>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+  },{threshold:0.08});
+  document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
