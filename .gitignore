@@ -12,3 +12,6 @@ Thumbs.db
 *.log
 *.tmp
 node_modules/
+
+# Local tooling
+.claude/
