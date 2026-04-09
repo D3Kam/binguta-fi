@@ -6,15 +6,16 @@
 <title>BINGUTA — Future Innovations</title>
 <meta name="description" content="Defense technology venture capital. Investing in the next generation of NATO and EU defense dominance.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{--black:#020304;--off-black:#080c10;--panel:#0e1520;--border:rgba(255,255,255,0.07);--accent:#c8a96e;--accent2:#7eb8d4;--muted:#8c97a6;--white:#f0f2f5}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--black);color:#d8dde6;font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden}
+  html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--muted) var(--black)}
+  body{background:var(--black);color:#d8dde6;font-family:'Barlow',sans-serif;font-weight:400;overflow-x:hidden}
   ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--muted)}
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:70px;background:rgba(2,3,4,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:70px;background:rgba(2,3,4,0.92);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
   .nav-logo{display:flex;flex-direction:column;line-height:1;gap:2px;text-decoration:none}
   .nav-logo .wm{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.12em;color:var(--white)}
   .nav-logo .nm{font-family:'Barlow Condensed',sans-serif;font-size:.52rem;letter-spacing:.38em;color:var(--muted);text-transform:uppercase}
@@ -107,7 +108,7 @@
   .cta-sec .sec-title{color:var(--black);font-size:clamp(2.8rem,5.5vw,6rem)}
   .cta-sec .sec-body{color:rgba(0,0,0,.55);max-width:460px}
   .cta-form{display:flex;margin-top:3rem;max-width:460px}
-  .cta-form input{flex:1;background:rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.18);border-right:none;padding:.9rem 1.1rem;font-family:'Barlow',sans-serif;font-size:.88rem;color:var(--black);outline:none}
+  .cta-form input{flex:1;background:rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.18);border-right:none;padding:.9rem 1.1rem;font-family:'Barlow',sans-serif;font-size:1rem;color:var(--black);outline:none}
   .cta-form input::placeholder{color:rgba(0,0,0,.38)}
   .cta-form button{background:var(--black);color:var(--accent);border:1px solid var(--black);padding:.9rem 1.8rem;font-family:'Barlow Condensed',sans-serif;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;transition:background .2s;font-weight:600;white-space:nowrap}
   .cta-form button:hover{background:var(--off-black)}
@@ -134,7 +135,7 @@
     .foot-bar{flex-direction:column;gap:.5rem;text-align:center}
     .thesis-cards{grid-template-columns:1fr}
   }
-  @media(max-width:580px){.focus-grid{grid-template-columns:1fr}.fi{aspect-ratio:16/9}}
+  @media(max-width:580px){.focus-grid{grid-template-columns:1fr}.fi{aspect-ratio:16/9}.fi-desc{max-height:80px;opacity:1}.fi-line{width:calc(100% - 3.6rem)}}
 </style>
 </head>
 <body>
