@@ -107,16 +107,22 @@
   .cta-sec .sec-label{color:rgba(0,0,0,.45)}.cta-sec .sec-label::before{background:rgba(0,0,0,.3)}
   .cta-sec .sec-title{color:var(--black);font-size:clamp(2.8rem,5.5vw,6rem)}
   .cta-sec .sec-body{color:rgba(0,0,0,.55);max-width:460px}
-  .cta-form{display:flex;margin-top:3rem;max-width:460px}
+  #form-wrap{position:relative;margin-top:3rem}
+  .cta-form{display:flex;max-width:460px;transition:opacity .4s ease,transform .4s ease}
   .cta-form input{flex:1;background:rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.18);border-right:none;padding:.9rem 1.1rem;font-family:'Barlow',sans-serif;font-size:1rem;color:var(--black);outline:none}
   .cta-form input::placeholder{color:rgba(0,0,0,.38)}
-  .cta-form input[aria-invalid="true"]{border-color:rgba(0,0,0,.6);background:rgba(0,0,0,.15)}
   .cta-form button{background:var(--black);color:var(--accent);border:1px solid var(--black);padding:.9rem 1.8rem;font-family:'Barlow Condensed',sans-serif;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;transition:background .2s;font-weight:600;white-space:nowrap}
   .cta-form button:hover{background:var(--off-black)}
-  .cta-form button:disabled{opacity:.5;cursor:not-allowed}
-  .fs-success{display:none;margin-top:1.5rem;font-family:'Barlow Condensed',sans-serif;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--black);display:flex;align-items:center;gap:.6rem}
-  .fs-success::before{content:'✓';font-size:1rem}
-  .fs-error{display:none;margin-top:.8rem;font-family:'Barlow',sans-serif;font-size:.82rem;color:rgba(0,0,0,.7)}
+  .cta-form button:disabled{opacity:.5;cursor:not-allowed;pointer-events:none}
+  .cta-form.sent{opacity:0;transform:translateY(-8px);pointer-events:none}
+  .form-sent{position:absolute;top:0;left:0;opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;pointer-events:none}
+  .form-sent.show{opacity:1;transform:none}
+  .form-sent-line{width:0;height:2px;background:var(--black);transition:width .45s ease}
+  .form-sent.show .form-sent-line{width:48px}
+  .form-sent-title{font-family:'Bebas Neue',sans-serif;font-size:3.2rem;color:var(--black);line-height:1;margin-top:.7rem;opacity:0;transform:translateY(6px);transition:opacity .4s ease .25s,transform .4s ease .25s}
+  .form-sent.show .form-sent-title{opacity:1;transform:none}
+  .form-sent-sub{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(0,0,0,.5);margin-top:.4rem;opacity:0;transition:opacity .4s ease .5s}
+  .form-sent.show .form-sent-sub{opacity:1}
 
   footer{background:var(--off-black);border-top:1px solid var(--border);padding:4.5rem 5vw;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:4rem;align-items:start}
   .fb .wm{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.12em;color:var(--white)}
@@ -325,13 +331,17 @@
     <p class="sec-label">Apply for Investment</p>
     <h2 class="sec-title">If You're Building What's Next — We're Already Looking for You.</h2>
     <p class="sec-body">Tell us what you're building. We review every submission and move fast on the right teams. Capital is just the starting point.</p>
-    <div data-fs-success class="fs-success">Submission received — we'll be in touch.</div>
-    <div data-fs-error class="fs-error"></div>
-    <form id="contact-form" class="cta-form">
-      <input type="email" id="email" name="email" placeholder="founder@company.com" required data-fs-field>
-      <span data-fs-error="email"></span>
-      <button type="submit" data-fs-submit-btn>Submit →</button>
-    </form>
+    <div id="form-wrap">
+      <div class="form-sent" id="form-sent">
+        <div class="form-sent-line"></div>
+        <div class="form-sent-title">Received.</div>
+        <div class="form-sent-sub">We'll be in touch.</div>
+      </div>
+      <form id="contact-form" class="cta-form">
+        <input type="email" name="email" placeholder="founder@company.com" required>
+        <button type="submit" id="submit-btn">Submit →</button>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -369,9 +379,31 @@
   document.querySelectorAll('.fu').forEach(el => obs.observe(el));
 </script>
 <script>
-  window.formspree = window.formspree || function(){(formspree.q=formspree.q||[]).push(arguments)};
-  formspree('initForm',{formElement:'#contact-form',formId:'xeevolpo'});
+  const form = document.getElementById('contact-form');
+  const btn = document.getElementById('submit-btn');
+  const sent = document.getElementById('form-sent');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.textContent = '···';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://formspree.io/f/xeevolpo', {
+        method: 'POST',
+        headers: {'Accept': 'application/json'},
+        body: new FormData(form)
+      });
+      if (res.ok) {
+        form.classList.add('sent');
+        setTimeout(() => sent.classList.add('show'), 400);
+      } else {
+        btn.textContent = 'Submit →';
+        btn.disabled = false;
+      }
+    } catch(err) {
+      btn.textContent = 'Submit →';
+      btn.disabled = false;
+    }
+  });
 </script>
-<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
